@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/products")
-@RequiredArgsConstructor
+@RequiredArgsConstructor // <-- Esta anotação já vai criar o construtor com as duas dependências finais automaticamente!
 @Tag(name = "Products", description = "Gerenciamento de produtos")
 public class ProductController {
+
     private final ListProductsUseCase listProductsUseCase;
     private final ProductWebMapper mapper;
 
-    public ProductController(ProductWebMapper mapper) {
-        this.mapper = mapper;
-        listProductsUseCase = null;
-    }
+    // O construtor manual que estava aqui FOI REMOVIDO!
 
     @GetMapping
     @Operation(summary = "Lista todos os produtos paginados")
